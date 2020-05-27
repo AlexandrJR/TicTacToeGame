@@ -12,9 +12,7 @@ namespace TicTacToeGame
 {
     public partial class GameField : Form
     {
-        bool xplayerTurn = true;
-        bool oplayerTurn = true;
-
+        bool xplayerTurn = false;
         public GameField()
         {
             InitializeComponent();
@@ -39,19 +37,52 @@ namespace TicTacToeGame
             }
         }
 
-        private void Palyer_Click(object sender, EventArgs e)
+        private void Player_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
-            label.Text = "X";
+
+            if (label.Text == string.Empty)
+            {
+                if (!xplayerTurn)
+                {
+                    label.Text = "X";
+                }
+                else
+                {
+                    label.Text = "O";
+                }
+                xplayerTurn = !xplayerTurn;
+            }
+            WinCase();
+        }
+
+        private void WinCase()
+        {
+            if (
+                    (label1.Text == label2.Text && label2.Text == label3.Text && label1.Text != String.Empty) ||
+                    (label4.Text == label5.Text && label5.Text == label6.Text && label4.Text != String.Empty) ||
+                    (label7.Text == label8.Text && label8.Text == label9.Text && label7.Text != String.Empty) ||
+                    (label1.Text == label4.Text && label4.Text == label7.Text && label1.Text != String.Empty) ||
+                    (label2.Text == label5.Text && label5.Text == label8.Text && label2.Text != String.Empty) ||
+                    (label3.Text == label6.Text && label6.Text == label9.Text && label3.Text != String.Empty) ||
+                    (label1.Text == label5.Text && label5.Text == label9.Text && label1.Text != String.Empty) ||
+                    (label3.Text == label5.Text && label5.Text == label7.Text && label3.Text != String.Empty)
+                )
+            {
+                GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
             if (xplayerTurn)
             {
-                label.Text = "X";
+                MessageBox.Show("X player won!");
             }
             else
             {
-                label.Text = "O";
+                MessageBox.Show("O player won!");
             }
-            xplayerTurn = !xplayerTurn;
         }
     }
 }
