@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.Grid.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,11 +52,11 @@
             this.Grid.Controls.Add(this.label8, 1, 2);
             this.Grid.Controls.Add(this.label7, 0, 2);
             this.Grid.Controls.Add(this.label6, 2, 1);
-            this.Grid.Controls.Add(this.label5, 1, 1);
             this.Grid.Controls.Add(this.label4, 0, 1);
             this.Grid.Controls.Add(this.label3, 2, 0);
             this.Grid.Controls.Add(this.label2, 1, 0);
             this.Grid.Controls.Add(this.label1, 0, 0);
+            this.Grid.Controls.Add(this.label5, 1, 1);
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Grid.Location = new System.Drawing.Point(0, 0);
             this.Grid.Name = "Grid";
@@ -175,17 +176,28 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.Player_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.label10.Location = new System.Drawing.Point(138, 167);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 73);
+            this.label10.TabIndex = 1;
+            // 
             // GameField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.Grid);
             this.Name = "GameField";
             this.Text = "TicTacToe";
             this.Grid.ResumeLayout(false);
             this.Grid.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,6 +213,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
     }
 }
 

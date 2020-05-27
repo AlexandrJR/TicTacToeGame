@@ -12,7 +12,8 @@ namespace TicTacToeGame
 {
     public partial class GameField : Form
     {
-        bool xplayerTurn = false;
+        bool xPlayerTurn = false;
+        int turnValue = 0;
         public GameField()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace TicTacToeGame
         {
             Grid.BackColor = Color.LightCoral;
             Grid.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
-
+           
         }
 
         private void InitializeCells()
@@ -37,13 +38,19 @@ namespace TicTacToeGame
             }
         }
 
+        private void RestartGame()
+        {
+            InitializeCells();
+            turnValue = 0;
+        }
+
         private void Player_Click(object sender, EventArgs e)
         {
             Label label = (Label)sender;
 
             if (label.Text == string.Empty)
             {
-                if (!xplayerTurn)
+                if (!xPlayerTurn)
                 {
                     label.Text = "X";
                 }
@@ -51,9 +58,11 @@ namespace TicTacToeGame
                 {
                     label.Text = "O";
                 }
-                xplayerTurn = !xplayerTurn;
+                xPlayerTurn = !xPlayerTurn;
+                turnValue++;
             }
             WinCase();
+            Draw();
         }
 
         private void WinCase()
@@ -75,13 +84,23 @@ namespace TicTacToeGame
 
         private void GameOver()
         {
-            if (xplayerTurn)
+            if (xPlayerTurn)
             {
                 MessageBox.Show("X player won!");
             }
             else
             {
                 MessageBox.Show("O player won!");
+            }
+            RestartGame();
+        }
+
+        private void Draw()
+        {
+            if(turnValue == 9)
+            {
+                MessageBox.Show("Draw!");
+                RestartGame();
             }
         }
     }
